@@ -17,8 +17,10 @@ public class Limb : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public float drag = 10.0f; 
     public float angularDrag = 5.0f; 
     public float distance = 0.2f; 
-    public bool attachToCenterOfMass = false; 
+    public bool attachToCenterOfMass = false;
 
+    public bool CanDrag = true;
+    
     private SpringJoint springJoint; 
     private Rigidbody _rb;
     private Joint _attachedHold;
@@ -45,7 +47,8 @@ public class Limb : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     void Update() 
     { 
         // if (!_isDragging) 
-        if (!Input.GetMouseButtonDown(0)) 
+        // if (!Input.GetMouseButtonDown(0)) 
+        if (!Input.GetMouseButtonDown(0) || !CanDrag) 
             return; 
         
         Camera mainCamera = FindCamera(); 
@@ -119,7 +122,8 @@ public class Limb : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         springJoint.connectedBody.angularDrag     = this.angularDrag; 
         Camera cam = FindCamera(); 
         
-        while(Input.GetMouseButton(0)) 
+        // while(Input.GetMouseButton(0)) 
+        while (Input.GetMouseButton(0) && CanDrag) 
         { 
             Ray ray = cam.ScreenPointToRay(Input.mousePosition); 
             springJoint.transform.position = ray.GetPoint(distance); 
