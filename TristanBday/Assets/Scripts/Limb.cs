@@ -48,6 +48,13 @@ public class Limb : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     { 
         // if (!_isDragging) 
         // if (!Input.GetMouseButtonDown(0)) 
+
+        // tODO go for event bus
+        if (_attachedHold && _attachedHold.connectedBody == null)
+        {
+            _attachedHold = null;
+        }
+        
         if (!Input.GetMouseButtonDown(0) || !CanDrag) 
             return; 
         
