@@ -9,6 +9,8 @@ using UnityEngine.EventSystems;
 // public class Limb : MonoBehaviour
 public class Limb : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    private const string LAST_HOLD_SUFFIX = "Last";
+    
     [Header("Drag Control")]
     public float maxDistance = 100.0f; 
     // [SerializeField] private Plane _raycastPlane;
@@ -77,11 +79,6 @@ public class Limb : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         //     return; 
         if(!hit.rigidbody || hit.rigidbody.isKinematic) 
             return;
-
-        // if (hit.rigidbody == _rb)
-        // {
-        //     DetachFromHold();
-        // }
         
         //Initialise the enter variable
         float enter = 0.0f;
@@ -95,21 +92,6 @@ public class Limb : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             springJoint = go.AddComponent<SpringJoint>(); 
         }
 
-        // if (_raycastPlane.Raycast(ray, out enter))
-        // {
-        //     //Get the point that is clicked
-        //     Vector3 hitPoint = ray.GetPoint(enter);
-        //
-        //     //Move your cube GameObject to the point where you clicked
-        //     // m_Cube.transform.position = hitPoint;
-        //     // m_Cube.transform.position = hitPoint;
-        //     springJoint.transform.position = hitPoint; 
-        // }
-        // else
-        // {
-        //     springJoint.transform.position = hit.point; 
-        // }
-        
         springJoint.transform.position = hit.point; 
         if (attachToCenterOfMass) 
         { 
@@ -167,13 +149,19 @@ public class Limb : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         Debug.Log($"[{this.GetType().ToString()}] [{name}] trigger enter: {other.name}");
         AttachToHold(other);
+
+        if (other.name.EndsWith(LAST_HOLD_SUFFIX))
+        {
+            Debug.Log($"[{this.GetType().ToString()}] lasthold reached");
+            EventBus.Trigger(EventHooks.LastHoldReached, true);
+        }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        Debug.Log($"[{this.GetType().ToString()}] [{name}] trigger exit: {other.name}");
-        // DetachFromHold();
-    }
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     Debug.Log($"[{this.GetType().ToString()}] [{name}] trigger exit: {other.name}");
+    //     // DetachFromHold();
+    // }
 
     private void AttachToHold(Collider other)
     {

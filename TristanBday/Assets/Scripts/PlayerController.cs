@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour
 
     private void SetDrag(bool canDrag)
     {
-        Debug.Log($"SET DRAG: {canDrag}");
         foreach (var limb in _limbs)
         {
             limb.CanDrag = canDrag;
