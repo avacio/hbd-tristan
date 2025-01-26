@@ -25,7 +25,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AmbientOcc:
-        m_Texture: {fileID: 2800000, guid: b1d8edbc1f0c94af48769a94e36685f6, type: 3}
+        m_Texture: {fileID: 2800000, guid: db527eee657fc40c8991175dacec4b19, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Base:
@@ -37,7 +37,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Blend:
-        m_Texture: {fileID: 2800000, guid: a62d9e7ca9d8a44f18b92c4112452cfb, type: 3}
+        m_Texture: {fileID: 2800000, guid: d68360f2377bb40489e0d3255b4e7bf8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -81,7 +81,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Roughness:
-        m_Texture: {fileID: 2800000, guid: 9d295db526af44be397c6c0fc9104dcc, type: 3}
+        m_Texture: {fileID: 2800000, guid: bd50ac1f10d1d4286924188f6f68660d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -106,7 +106,7 @@ Material:
     - _AlphaToMask: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
-    - _BlendOpacity: 1
+    - _BlendOpacity: 0.935
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0

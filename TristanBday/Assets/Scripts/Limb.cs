@@ -162,7 +162,7 @@ public class Limb : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private void OnTriggerExit(Collider other)
     {
         Debug.Log($"[{this.GetType().ToString()}] [{name}] trigger exit: {other.name}");
-        DetachFromHold();
+        // DetachFromHold();
     }
 
     private void AttachToHold(Collider other)
