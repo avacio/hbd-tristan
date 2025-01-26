@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HoldManager : MonoBehaviour
 {
-    // Update is called once per frame
     void Update()
     {
         // todo support touch
@@ -14,12 +14,15 @@ public class HoldManager : MonoBehaviour
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            // if (Physics.Raycast(ray, out hit))
             if (Physics.Raycast(ray, out hit))
             {
                 if (hit.transform.gameObject.CompareTag("Hold") &&
                     hit.transform.GetComponent<Joint>() is Joint holdJoint)
                 {
-                    holdJoint.connectedBody = null;
+                    // holdJoint.connectedBody = null;
+                    Debug.Log($"Release hold on {holdJoint.name}");
+                    EventBus.Trigger(EventHooks.HoldReleased, holdJoint);
                 }
             }
         }

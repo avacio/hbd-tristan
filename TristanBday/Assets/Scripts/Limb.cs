@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -31,9 +32,17 @@ public class Limb : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     // /// </summary>
     public bool IsHolding => _attachedHold != null;
     
+    private Action<Joint> _holdReleasedHandle;
+    
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        EventBus.Register(EventHooks.HoldReleased, _holdReleasedHandle = OnHoldReleased);
+    }
+
+    private void OnDestroy()
+    {
+        EventBus.Unregister(EventHooks.HoldReleased, _holdReleasedHandle);
     }
     
     public void OnPointerDown(PointerEventData eventData) {
@@ -63,9 +72,9 @@ public class Limb : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         // TODO support touch on mobile
         RaycastHit hit; 
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        // if(!Physics.Raycast(ray, out hit, maxDistance)) 
-        if(!Physics.Raycast(ray, out hit, maxDistance, layerMask: LayerMask.NameToLayer("Wall"))) 
-            return; 
+        if (!Physics.Raycast(ray, out hit, maxDistance)) 
+        // if(!Physics.Raycast(ray, out hit, maxDistance, layerMask: LayerMask.NameToLayer("Wall"))) 
+        //     return; 
         if(!hit.rigidbody || hit.rigidbody.isKinematic) 
             return;
 
@@ -78,7 +87,7 @@ public class Limb : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         float enter = 0.0f;
         
 
-        if(!springJoint) 
+        if (!springJoint) 
         { 
             GameObject go = new GameObject("Rigidbody dragger"); 
             Rigidbody body = go.AddComponent<Rigidbody>(); 
@@ -121,15 +130,16 @@ public class Limb : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         StartCoroutine(DragObject(hit.distance)); 
     } 
     
-    IEnumerator DragObject(float distance) 
-    { 
-        float oldDrag             = springJoint.connectedBody.drag; 
+    IEnumerator DragObject(float distance)
+    {
+        if (springJoint && !springJoint.connectedBody) yield break;
+
+        float oldDrag            = springJoint.connectedBody.drag; 
         float oldAngularDrag     = springJoint.connectedBody.angularDrag; 
         springJoint.connectedBody.drag             = this.drag; 
         springJoint.connectedBody.angularDrag     = this.angularDrag; 
         Camera cam = FindCamera(); 
         
-        // while(Input.GetMouseButton(0)) 
         while (Input.GetMouseButton(0) && CanDrag) 
         { 
             Ray ray = cam.ScreenPointToRay(Input.mousePosition); 
@@ -137,7 +147,7 @@ public class Limb : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             yield return null; 
         } 
         
-        if(springJoint.connectedBody) 
+        if (springJoint.connectedBody) 
         { 
             springJoint.connectedBody.drag             = oldDrag; 
             springJoint.connectedBody.angularDrag     = oldAngularDrag; 
@@ -171,6 +181,14 @@ public class Limb : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             holdJoint.connectedBody = _rb;
             _attachedHold = holdJoint;
+        }
+    }
+
+    private void OnHoldReleased(Joint joint)
+    {
+        if (joint == _attachedHold)
+        {
+            DetachFromHold();
         }
     }
 
