@@ -19,4 +19,9 @@ public static class EventHooks
     /// Invoked to show caption text
     /// </summary>
     public static EventHook ShowCaptionText = new EventHook(nameof(ShowCaptionText));
+    
+    /// <summary>
+    /// Invoked when player has reached checkpoint hold
+    /// </summary>
+    public static EventHook CheckpointHoldReached = new EventHook(nameof(CheckpointHoldReached));
 }

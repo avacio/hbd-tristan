@@ -1,17 +1,15 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using TouchPhase = UnityEditor.DeviceSimulation.TouchPhase;
 
 [RequireComponent(typeof(Collider))]
 public class Limb : MonoBehaviour
-// public class Limb : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     private const string LAST_HOLD_SUFFIX = "Last";
+    private const string CHECKPOINT_HOLD_SUBSTRING = "Checkpoint";
     
     [SerializeField] private InputActionAsset _inputActionAsset;
     
@@ -38,51 +36,16 @@ public class Limb : MonoBehaviour
     
     private Action<Joint> _holdReleasedHandle;
     private InputAction _inputAction;
-    // private bool _isInputHeldDown = false;
     
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
         EventBus.Register(EventHooks.HoldReleased, _holdReleasedHandle = OnHoldReleased);
-        _inputAction = _inputActionAsset.actionMaps[1]["Click"];
-        // _inputAction.started += OnInputStarted;
-        // _inputAction.performed += OnInputPerformed;
     }
 
     private void OnDestroy()
     {
         EventBus.Unregister(EventHooks.HoldReleased, _holdReleasedHandle);
-        // _inputAction.started -= OnInputStarted;
-        // _inputAction.performed -= OnInputPerformed;
-    }
-    
-    // public void OnPointerDown(PointerEventData eventData)
-    // {
-    //     _isInputHeldDown = true;
-    //     Debug.Log($"[{this.GetType().ToString()}] STARTED input held down: {_isInputHeldDown}");
-    // }
-    //
-    // public void OnPointerUp(PointerEventData eventData)
-    // {
-    //     _isInputHeldDown = false;
-    //     Debug.Log($"[{this.GetType().ToString()}] PERFORMED input held down: {_isInputHeldDown}");
-    // }
-    //
-    // private void OnInputStarted(InputAction.CallbackContext context)
-    // {
-    //     _isInputHeldDown = true;
-    //     Debug.Log($"[{this.GetType().ToString()}] STARTED input held down: {_isInputHeldDown}");
-    // }
-    //
-    // private void OnInputPerformed(InputAction.CallbackContext context)
-    // {
-    //     _isInputHeldDown = false;
-    //     Debug.Log($"[{this.GetType().ToString()}] PERFORMED input held down: {_isInputHeldDown}");
-    // }
-
-    private bool IsInputHeldDown()
-    {
-        return Input.GetMouseButtonDown(0) || Input.touchCount > 0;
     }
     
     void Update() 
@@ -176,12 +139,18 @@ public class Limb : MonoBehaviour
         }
     }
 
-    private void AttachToHold(Collider other)
+    public void AttachToHold(Collider other)
     {
         if (other.GetComponent<Joint>() is Joint holdJoint)
         {
             holdJoint.connectedBody = _rb;
             _attachedHold = holdJoint;
+            
+            if (other.name.Contains(CHECKPOINT_HOLD_SUBSTRING))
+            {
+                Debug.Log($"[{this.GetType().ToString()}] checkpoint reached");
+                EventBus.Trigger(EventHooks.CheckpointHoldReached, other);
+            }
         }
     }
 
@@ -193,7 +162,7 @@ public class Limb : MonoBehaviour
         }
     }
 
-    private void DetachFromHold()
+    public void DetachFromHold()
     {
         if (_attachedHold != null)
         {

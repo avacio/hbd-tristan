@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // TODO MOVE OUT OF UPDATE
         if (GetHoldCount() > 0 && !_limbsCanDrag)
         {
             SetDrag(true);
@@ -30,6 +29,14 @@ public class PlayerController : MonoBehaviour
         {
             _dragCountingDown = true;
             StartCoroutine(WaitToStopDrag());
+        }
+    }
+
+    public void DetachAllHolds()
+    {
+        foreach (var limb in _limbs)
+        {
+            limb.DetachFromHold();
         }
     }
 
