@@ -3,7 +3,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using TouchPhase = UnityEditor.DeviceSimulation.TouchPhase;
+using TouchPhase = UnityEngine.TouchPhase;
 
 [RequireComponent(typeof(Collider))]
 public class Limb : MonoBehaviour

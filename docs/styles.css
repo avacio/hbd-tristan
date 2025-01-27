@@ -1,0 +1,8 @@
+body {
+    background-color: black;
+}
+
+#spotify-playlist {
+    border-radius:12px;
+    margin: 20px;
+}
