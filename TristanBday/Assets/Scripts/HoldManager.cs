@@ -1,31 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class HoldManager : MonoBehaviour
 {
-    void Update()
+    [SerializeField] private InputActionAsset _inputActionAsset;
+
+    private InputAction _inputAction;
+    
+    private void Start()
     {
-        // todo support touch
-        
-        // Release hold if user clicks on it
-        if(Input.GetMouseButtonUp(0))
+        _inputAction = _inputActionAsset.actionMaps[1]["Click"];
+        _inputAction.performed += OnClickUp;
+    }
+
+    private void OnDestroy()
+    {
+        _inputAction.performed -= OnClickUp;
+    }
+
+    void OnClickUp(InputAction.CallbackContext context)
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit))
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            // if (Physics.Raycast(ray, out hit))
-            if (Physics.Raycast(ray, out hit))
+            if (hit.transform.gameObject.CompareTag("Hold") &&
+                hit.transform.GetComponent<Joint>() is Joint holdJoint)
             {
-                if (hit.transform.gameObject.CompareTag("Hold") &&
-                    hit.transform.GetComponent<Joint>() is Joint holdJoint)
-                {
-                    // holdJoint.connectedBody = null;
-                    Debug.Log($"Release hold on {holdJoint.name}");
-                    EventBus.Trigger(EventHooks.HoldReleased, holdJoint);
-                }
+                Debug.Log($"Release hold on {holdJoint.name}");
+                EventBus.Trigger(EventHooks.HoldReleased, holdJoint);
             }
         }
     }
-    
 }

@@ -2981,6 +2981,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 616039163179395102, guid: 91ba6be423edb490bb735926f6f93d01,
+        type: 3}
+      propertyPath: _inputActionAsset
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 707454d66d3514284a2fc9fb6711a947,
+        type: 3}
     - target: {fileID: 1017162031684140840, guid: 91ba6be423edb490bb735926f6f93d01,
         type: 3}
       propertyPath: m_EnableProjection
@@ -2996,6 +3002,12 @@ PrefabInstance:
       propertyPath: m_EnableProjection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2806315771525162328, guid: 91ba6be423edb490bb735926f6f93d01,
+        type: 3}
+      propertyPath: _inputActionAsset
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 707454d66d3514284a2fc9fb6711a947,
+        type: 3}
     - target: {fileID: 3305233558593705549, guid: 91ba6be423edb490bb735926f6f93d01,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3096,6 +3108,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Climber
       objectReference: {fileID: 0}
+    - target: {fileID: 6271084349990538720, guid: 91ba6be423edb490bb735926f6f93d01,
+        type: 3}
+      propertyPath: _inputActionAsset
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 707454d66d3514284a2fc9fb6711a947,
+        type: 3}
     - target: {fileID: 6529349749603973146, guid: 91ba6be423edb490bb735926f6f93d01,
         type: 3}
       propertyPath: m_EnableProjection
@@ -3111,6 +3129,12 @@ PrefabInstance:
       propertyPath: m_EnableProjection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8192254706783056880, guid: 91ba6be423edb490bb735926f6f93d01,
+        type: 3}
+      propertyPath: _inputActionAsset
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 707454d66d3514284a2fc9fb6711a947,
+        type: 3}
     - target: {fileID: 8597056465747596022, guid: 91ba6be423edb490bb735926f6f93d01,
         type: 3}
       propertyPath: m_EnableProjection
@@ -9909,6 +9933,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d95578db9d3ce435a8b6ca0117631beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputActionAsset: {fileID: -944628639613478452, guid: 707454d66d3514284a2fc9fb6711a947,
+    type: 3}
 --- !u!1001 &2038984561
 PrefabInstance:
   m_ObjectHideFlags: 0
