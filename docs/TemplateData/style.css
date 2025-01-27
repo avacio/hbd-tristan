@@ -6,6 +6,7 @@ body {
 /* #unity-container { position: absolute } */
 #unity-container {
     justify-self: center;
+    aspect-ratio: 9/16;
 }
 
 /* #unity-container.unity-desktop { left: 50%; top: 50%; transform: translate(-50%, -50%) } */
