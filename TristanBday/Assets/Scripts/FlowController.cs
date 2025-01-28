@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -96,6 +97,12 @@ public class FlowController : MonoBehaviour
         {
             _cameraFollow.enabled = true;
         }
+    }
+
+    public void ToggleFullscreen()
+    {
+        Screen.fullScreen = !Screen.fullScreen;
+        Debug.Log($"[{this.GetType().ToString()}] TOGGLE FULLSCREEN: {Screen.fullScreen}");
     }
 
     private void OnCheckpointReached(Collider checkpointCollider)

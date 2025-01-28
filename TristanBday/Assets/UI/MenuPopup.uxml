@@ -10,6 +10,7 @@
                 <ui:Button text="Restore last checkpoint because Twistan is stuck" parse-escape-sequences="true" display-tooltip-when-elided="true" name="restoreCheckpoint" class="menu-button" />
                 <ui:Button text="Restart" parse-escape-sequences="true" display-tooltip-when-elided="true" name="restart" class="menu-button" />
                 <ui:Button text="Toggle Camera View" parse-escape-sequences="true" display-tooltip-when-elided="true" name="toggleCameraView" class="menu-button" />
+                <ui:Button text="Toggle Fullscreen" parse-escape-sequences="true" display-tooltip-when-elided="true" name="toggleFullscreen" class="menu-button" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
