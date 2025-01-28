@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="start" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Textures/startShot.png?fileID=2800000&amp;guid=74e36aabeb2324bada071a9ad1fcef52&amp;type=3#startShot&quot;); -unity-background-scale-mode: scale-and-crop; justify-content: flex-end;">
+        <ui:Label tabindex="-1" text="TAP TO START" parse-escape-sequences="true" display-tooltip-when-elided="true" picking-mode="Ignore" style="-unity-text-align: upper-center; -unity-font: url(&quot;project://database/Assets/Fonts/jojoba/Jojoba.otf?fileID=12800000&amp;guid=f9a272b9c5b5d4967844bdbf404c9ceb&amp;type=3#Jojoba&quot;); -unity-font-definition: initial; color: rgb(255, 255, 255); font-size: 40px; align-self: center; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px;" />
+    </ui:VisualElement>
+</ui:UXML>
