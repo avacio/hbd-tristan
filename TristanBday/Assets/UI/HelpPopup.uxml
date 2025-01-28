@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles.uss?fileID=7433441132597879392&amp;guid=0ebad155d73354f3eba904b6cbde77fa&amp;type=3#Styles" />
+    <ui:VisualElement picking-mode="Ignore" class="root">
+        <ui:VisualElement class="popup">
+            <ui:VisualElement name="closeButton">
+                <ui:Label tabindex="-1" text="x" parse-escape-sequences="true" display-tooltip-when-elided="true" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="rawImage" style="background-image: url(&quot;project://database/Assets/Textures/ClimbVideo.renderTexture?fileID=8400000&amp;guid=2a9a7481ddf864077822913585422b78&amp;type=2#ClimbVideo&quot;); -unity-background-scale-mode: scale-to-fit;" />
+            <ui:Label tabindex="-1" text="Help lil Twistan climb the wall!&#10;&#10;You can drag his hands and feet to grab the blue holds. To release a hold just click on it.&#10;&#10;&lt;color=#808080&gt; P.S. If you see any spazzing limbs then it&apos;s a feature not a bug. :) &lt;/color&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="description" enable-rich-text="true" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

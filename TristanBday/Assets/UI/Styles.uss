@@ -1,0 +1,113 @@
+.popup {
+    background-color: rgba(0, 0, 0, 0.95);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    justify-content: flex-end;
+    align-self: center;
+    flex-grow: 0;
+    width: 70%;
+    height: 70%;
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+}
+
+.unity-label {
+    -unity-font: url("project://database/Assets/Fonts/jojoba/Jojoba.otf?fileID=12800000&guid=f9a272b9c5b5d4967844bdbf404c9ceb&type=3#Jojoba");
+    -unity-font-definition: initial;
+    color: rgb(255, 255, 255);
+    -unity-text-align: upper-center;
+    white-space: normal;
+}
+
+#rawImage {
+    height: 40%;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+#description {
+    -unity-text-align: middle-center;
+    -unity-font-definition: initial;
+    -unity-font: url("project://database/Assets/Fonts/jojoba/Jojoba.otf?fileID=12800000&guid=f9a272b9c5b5d4967844bdbf404c9ceb&type=3#Jojoba");
+    flex-grow: 1;
+    font-size: 37px;
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+#closeButton {
+    width: 60px;
+    height: 60px;
+    align-self: flex-end;
+    margin-right: -5px;
+}
+
+#closeButton > Label {
+    flex-grow: 1;
+    -unity-font: url("project://database/Assets/Fonts/jojoba/Jojoba.otf?fileID=12800000&guid=f9a272b9c5b5d4967844bdbf404c9ceb&type=3#Jojoba");
+    -unity-font-definition: initial;
+    -unity-font-style: bold;
+    font-size: 54px;
+    -unity-text-align: middle-center;
+}
+
+.root {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+Label {
+    -unity-font: url("project://database/Assets/Fonts/jojoba/Jojoba.otf?fileID=12800000&guid=f9a272b9c5b5d4967844bdbf404c9ceb&type=3#Jojoba");
+    -unity-font-definition: initial;
+}
+
+.menu-popup {
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+.menu-button {
+    -unity-font: url("project://database/Assets/Fonts/jojoba/Jojoba.otf?fileID=12800000&guid=f9a272b9c5b5d4967844bdbf404c9ceb&type=3#Jojoba");
+    -unity-font-definition: initial;
+    background-color: rgba(188, 188, 188, 0);
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    color: rgb(255, 255, 255);
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    font-size: 45px;
+    white-space: normal;
+    margin-right: 40px;
+    margin-left: 40px;
+    padding-right: 40px;
+    padding-left: 40px;
+}
+
+.menu-button:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+}
+
+.menu-button:active {
+    background-color: rgba(255, 255, 255, 0.24);
+}
+
+.menu-button-container {
+    flex-grow: 1;
+    justify-content: space-between;
+    margin-top: 15px;
+}

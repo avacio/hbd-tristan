@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles.uss?fileID=7433441132597879392&amp;guid=0ebad155d73354f3eba904b6cbde77fa&amp;type=3#Styles" />
+    <ui:VisualElement picking-mode="Ignore" class="root">
+        <ui:VisualElement class="popup menu-popup">
+            <ui:VisualElement name="closeButton">
+                <ui:Label tabindex="-1" text="x" parse-escape-sequences="true" display-tooltip-when-elided="true" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="buttonContainer" class="menu-button-container">
+                <ui:Button text="Skip to End&#10;Because I am weak" parse-escape-sequences="true" display-tooltip-when-elided="true" name="skipToEnd" class="menu-button" />
+                <ui:Button text="Restore last checkpoint because Twistan is stuck" parse-escape-sequences="true" display-tooltip-when-elided="true" name="restoreCheckpoint" class="menu-button" />
+                <ui:Button text="Restart" parse-escape-sequences="true" display-tooltip-when-elided="true" name="restart" class="menu-button" />
+                <ui:Button text="Toggle Camera View" parse-escape-sequences="true" display-tooltip-when-elided="true" name="toggleCameraView" class="menu-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

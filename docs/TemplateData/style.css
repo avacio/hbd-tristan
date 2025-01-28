@@ -1,6 +1,11 @@
 body {
     padding: 0;
-    margin: 0
+    margin: 0;
+    justify-content: center;
+}
+
+#title {
+    align-self: center;
 }
 
 /* #unity-container { position: absolute } */
@@ -98,4 +103,10 @@ body {
 #spotify-playlist {
     border-radius: 12px;
     margin: 10px;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+    margin:0;
 }
