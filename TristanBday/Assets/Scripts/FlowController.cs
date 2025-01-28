@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class FlowController : MonoBehaviour
 {
-    private const float FORCE_ASPECT_RATIO = 9f / 16f;
     private const string CAPTION_END = "Happy birthday <3 uwu";
     
     [SerializeField] private PlayerController _playerController;
@@ -62,23 +61,6 @@ public class FlowController : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(0); 
-    }
-
-    public void SetFullscreen(bool fullscreen)
-    {
-        int width = Screen.width;
-        int height = Screen.height;
-        if (Screen.width > Screen.height)
-        {
-            width = (int) (width / FORCE_ASPECT_RATIO);
-        }
-        else
-        {
-            height = (int) (height / FORCE_ASPECT_RATIO);
-        }
-        // Screen.SetResolution(width, height, fullscreen);
-        Screen.fullScreen = !Screen.fullScreen;
-        Debug.Log($"[{this.GetType().ToString()}] set {width}, {height}, fullscreen: {fullscreen}");
     }
 
     public void SetHelpToggle(bool isOn)

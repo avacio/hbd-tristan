@@ -15,3 +15,17 @@
 
 - Title Text art
    - Font generator: https://www.textstudio.com/
+
+- Fullscreen icon
+   - Icons made by deemakdaksina <https://www.flaticon.com/authors/deemakdaksina> from <https://www.flaticon.com/>
+
+# Colour palette
+
+#52F0FF
+Cyan blue sweater hex
+
+#FD5CFF
+Pink
+
+#AA35AA
+Darker pink

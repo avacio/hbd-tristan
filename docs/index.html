@@ -10,14 +10,12 @@
   </head>
 
   <body>
-    <div class="center">
-      <img id="title" src="TemplateData/HAPPY-BIRTHDAY-TRISTAN-2025.gif" alt="Happy Birthday Tristan title">
-      <br>
-      <iframe id="spotify-playlist"
-        src="https://open.spotify.com/embed/playlist/3cXfWOR5Io1ZUqOMi8IzlI?utm_source=generator&theme=0"
-        height="200" frameBorder="0" allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </div>
+    <img id="title" src="TemplateData/HAPPY-BIRTHDAY-TRISTAN-2025.gif" alt="Happy Birthday Tristan title" >
+    <br>
+    <iframe id="spotify-playlist"
+      src="https://open.spotify.com/embed/playlist/3cXfWOR5Io1ZUqOMi8IzlI?utm_source=generator&theme=0"
+      height="200" frameBorder="0" allowfullscreen=""
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=900 height=1600 tabindex="-1"></canvas>
@@ -29,9 +27,7 @@
       </div>
       <div id="unity-warning"> </div>
       <div id="unity-footer">
-        <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">TristanBday</div>
       </div>
     </div>
     <script>
@@ -42,6 +38,7 @@
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var warningBanner = document.querySelector("#unity-warning");
+      var spotifyWidget = document.querySelector("#spotify-playlist");
 
       // Shows a temporary message banner/ribbon for a few seconds, or
       // a permanent error message on top of the canvas if type=='error'.
@@ -105,6 +102,7 @@
         document.getElementsByTagName('head')[0].appendChild(meta);
         container.className = "unity-mobile";
         canvas.className = "unity-mobile";
+        spotifyWidget.className = "mobile";
 
         // To lower canvas resolution on mobile devices to gain some
         // performance, uncomment the following line:

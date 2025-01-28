@@ -63,9 +63,6 @@ public class Limb : MonoBehaviour
         if (!hit.rigidbody || hit.rigidbody.isKinematic) 
             return;
         
-        //Initialise the enter variable
-        float enter = 0.0f;
-
         if (!springJoint) 
         { 
             GameObject go = new GameObject("Rigidbody dragger"); 
@@ -129,12 +126,12 @@ public class Limb : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"[{this.GetType().ToString()}] [{name}] trigger enter: {other.name}");
+        // Debug.Log($"[{this.GetType().ToString()}] [{name}] trigger enter: {other.name}");
         AttachToHold(other);
 
         if (other.name.EndsWith(LAST_HOLD_SUFFIX))
         {
-            Debug.Log($"[{this.GetType().ToString()}] lasthold reached");
+            // Debug.Log($"[{this.GetType().ToString()}] Last hold reached");
             EventBus.Trigger(EventHooks.LastHoldReached, true);
         }
     }
@@ -148,7 +145,6 @@ public class Limb : MonoBehaviour
             
             if (other.name.Contains(CHECKPOINT_HOLD_SUBSTRING))
             {
-                Debug.Log($"[{this.GetType().ToString()}] checkpoint reached");
                 EventBus.Trigger(EventHooks.CheckpointHoldReached, other);
             }
         }

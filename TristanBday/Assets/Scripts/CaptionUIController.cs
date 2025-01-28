@@ -21,6 +21,8 @@ public class CaptionUIController : MonoBehaviour
     /// </summary>
     private Action<(string, float)> _captionTextHandle;
 
+    private Coroutine _activeCoroutine;
+
     private void Reset()
     {
         if (_text == null)
@@ -45,7 +47,7 @@ public class CaptionUIController : MonoBehaviour
         {
             _initialPopupClosed = true;
             _text.text = TEXT_INITIAL;
-            StartCoroutine(InitialText());
+            _activeCoroutine = StartCoroutine(InitialText());
         }
     }
 
@@ -68,7 +70,12 @@ public class CaptionUIController : MonoBehaviour
 
     private void ShowCaptionText((string captionText, float duration) eventData)
     {
-        StartCoroutine(ShowText(eventData.captionText, eventData.duration));
+        if (_activeCoroutine != null)
+        {
+            StopCoroutine(_activeCoroutine);
+        }
+        
+        _activeCoroutine = StartCoroutine(ShowText(eventData.captionText, eventData.duration));
     }
     
     private IEnumerator ShowText(string captionText, float duration)
